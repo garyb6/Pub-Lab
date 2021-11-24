@@ -8,7 +8,7 @@ class TestCustomer(unittest.TestCase):
     
     def setUp(self):
         self.drink1 = Drink('Whisky', 5.00, True)
-        self.drink2 = Drink('Whisky', 5.00, True)
+        self.drink2 = Drink('espresso martini', 7.00, True)
         self.customer = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27)
         
     def test_customer_has_name(self):
@@ -19,4 +19,8 @@ class TestCustomer(unittest.TestCase):
 
     def test_customer_has_wallet(self):
         self.assertEqual(6.00, self.customer.wallet)
+    
+    def test_customer_can_afford(self):
+        self.assertEqual(True, self.customer.can_afford(self.drink1))
+        self.assertEqual(False, self.customer.can_afford(self.drink2))
 

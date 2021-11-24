@@ -5,3 +5,8 @@ class Customer:
         self.wallet = wallet
         self.age = age
 
+    def can_afford(self, drink):
+        if self.wallet >= drink.price:
+            return True 
+        else:
+             return False 
