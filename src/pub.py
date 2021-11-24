@@ -26,7 +26,13 @@ class Pub:
 
     def sell_drink(self, customer, drink_name):
         drink = self.find_drink_by_name(drink_name)
-        customer.stomach.append(drink)
-        customer.wallet -= drink.price
-        self.till += drink.price
-        self.drinks.remove(drink)
+        if self.get_id (customer):
+            customer.stomach.append(drink)
+            customer.wallet -= drink.price
+            self.till += drink.price
+            self.drinks.remove(drink)
+        elif not drink.alco_status: #alternatively use elif drink.alco_status == False
+            customer.stomach.append(drink)
+            customer.wallet -= drink.price
+            self.till += drink.price
+            self.drinks.remove(drink)

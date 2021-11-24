@@ -8,7 +8,7 @@ class TestPub(unittest.TestCase):
     
     def setUp(self):
         self.drink1 = Drink('Whisky', 5.00, True)
-        self.drink2 = Drink('Irn Bru', 1.99, False)
+        self.drink2 = Drink('Irn Bru', 2.00, False)
         self.drink3 = Drink('Beer', 4.00, True)
         self.pub = Pub('The Prancing Pony', 100.00, [self.drink1, self.drink2, self.drink3])
        
@@ -49,4 +49,29 @@ class TestPub(unittest.TestCase):
         self.assertEqual(2.00, self.customer.wallet)
         self.assertEqual(104.00, self.pub.till)
         self.assertEqual(False, self.drink3 in self.pub.drinks)
+
+    def test_pub_can_sell_drink(self):
+        self.customer = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27)
+        self.pub.sell_drink(self.customer, 'Irn Bru')
+        self.assertEqual(3, len(self.customer.stomach))
+        self.assertEqual(4.00, self.customer.wallet)
+        self.assertEqual(102.00, self.pub.till)
+        self.assertEqual(False, self.drink2 in self.pub.drinks)
+
+    def test_pub_can_sell_drink(self):
+        self.customer = Customer("JP O'Reilly", [], 10.00, 17)
+        self.pub.sell_drink(self.customer, 'Beer')
+        self.assertEqual(0, len(self.customer.stomach))
+        self.assertEqual(10.00, self.customer.wallet)
+        self.assertEqual(100.00, self.pub.till)
+        self.assertEqual(True, self.drink3 in self.pub.drinks)
+
+    def test_pub_can_sell_drink(self):
+        self.customer = Customer("JP O'Reilly", [], 10.00, 17)
+        self.pub.sell_drink(self.customer, 'Irn Bru')
+        self.assertEqual(1, len(self.customer.stomach))
+        self.assertEqual(8.00, self.customer.wallet)
+        self.assertEqual(102.00, self.pub.till)
+        self.assertEqual(False, self.drink2 in self.pub.drinks)
+
 
