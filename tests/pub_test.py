@@ -18,3 +18,11 @@ class TestPub(unittest.TestCase):
 
     def test_pub_has_drinks(self):
         self.assertEqual(2, len(self.pub.drinks))
+
+    def test_pub_finds_drink(self):
+        self.assertEqual(self.drink2, self.pub.find_drink_by_name('Irn Bru'))
+
+    # def test_pub_can_remove_drink(self):
+    #     self.pub.remove_drink('Whisky')
+    #     self.assertEqual(1, len(self.pub.drinks))
+    #     self.assertEqual(False, self.drink1 in self.pub.drinks)
