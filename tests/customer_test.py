@@ -29,4 +29,4 @@ class TestCustomer(unittest.TestCase):
         self.assertEqual(3, len(self.customer.stomach))
         self.assertEqual(2.00, self.customer.wallet)
         self.assertEqual(104.00, self.pub.till)
-        self.assertEqual(2, len(self.pub.drinks))
+        self.assertEqual(False, self.drink3 in self.pub.drinks)
