@@ -20,13 +20,3 @@ class TestCustomer(unittest.TestCase):
     def test_customer_has_wallet(self):
         self.assertEqual(6.00, self.customer.wallet)
 
-    def test_customer_can_buy_drink(self):
-        self.drink3 = Drink('Beer', 4.00, True)
-        self.pub = Pub('The Prancing Pony', 100.00, [self.drink1, self.drink2, self.drink3])
-
-        self.customer.buy_drink(self.pub, 'Beer')
-
-        self.assertEqual(3, len(self.customer.stomach))
-        self.assertEqual(2.00, self.customer.wallet)
-        self.assertEqual(104.00, self.pub.till)
-        self.assertEqual(False, self.drink3 in self.pub.drinks)

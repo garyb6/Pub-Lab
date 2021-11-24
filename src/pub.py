@@ -18,3 +18,15 @@ class Pub:
 
     def remove_drink(self, drink_name):
         self.drinks.remove(self.find_drink_by_name(drink_name))
+
+    def get_id(self, customer):
+        if customer.age >= 18:
+            return True
+        else: return False
+
+    def sell_drink(self, customer, drink_name):
+        drink = self.find_drink_by_name(drink_name)
+        customer.stomach.append(drink)
+        customer.wallet -= drink.price
+        self.till += drink.price
+        self.drinks.remove(drink)
