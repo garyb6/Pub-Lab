@@ -10,5 +10,5 @@ class Pub:
             if name == drink.name:
                 return drink
 
-    # def remove_drink(self, drink_name):
-    #     self.drinks.remove(drink_name)
+    def remove_drink(self, drink_name):
+        self.drinks.remove(self.find_drink_by_name(drink_name))
