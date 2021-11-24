@@ -15,9 +15,15 @@ class TestPub(unittest.TestCase):
 
     def test_pub_has_till(self):
         self.assertEqual(100.00, self.pub.till)
+    
+    def test_check_till_amount(self):
+        self.assertEqual(100.00, self.pub.check_till())
 
     def test_pub_has_drinks(self):
         self.assertEqual(2, len(self.pub.drinks))
+
+    def test_pub_drink_list(self):
+        self.assertEqual(self.pub.drinks, self.pub.drinks_list())
 
     def test_pub_finds_drink(self):
         self.assertEqual(self.drink2, self.pub.find_drink_by_name('Irn Bru'))

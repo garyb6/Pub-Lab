@@ -5,6 +5,12 @@ class Pub:
         self.till = till
         self.drinks = drinks
 
+    def check_till(self):
+        return self.till 
+
+    def drinks_list(self):
+        return self.drinks 
+
     def find_drink_by_name(self, name):
         for drink in self.drinks:
             if name == drink.name:
