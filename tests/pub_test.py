@@ -3,6 +3,7 @@ import unittest
 from src.pub import Pub
 from src.drink import Drink
 from src.customer import Customer 
+from src.food import Food 
 
 class TestPub(unittest.TestCase):
     
@@ -10,8 +11,9 @@ class TestPub(unittest.TestCase):
         self.drink1 = Drink('Whisky', 5.00, True, 1)
         self.drink2 = Drink('Irn Bru', 2.00, False, 0)
         self.drink3 = Drink('Beer', 4.00, True, 1.50)
-        self.pub = Pub('The Prancing Pony', 100.00, [self.drink1, self.drink2, self.drink3])
-       
+        self.food1 = Food('Crisps', 1.00, 0.5)
+        self.pub = Pub('The Prancing Pony', 100.00, [self.drink1, self.drink2, self.drink3], [self.food1])
+
     def test_pub_has_name(self):
         self.assertEqual('The Prancing Pony', self.pub.name)
 
@@ -90,10 +92,13 @@ class TestPub(unittest.TestCase):
         self.assertEqual(100.00, self.pub.till)
         self.assertEqual(True, self.drink2 in self.pub.drinks)
 
-    def test_pub_can_sell_food(self):
-        self.customer = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27, 8.00)
-        self.pub.sell_food(self.customer, 'Crisps')
-        self.assertEqual(5.00, self.customer.wallet)
-        self.assertEqual(101.00, self.pub.till)
-        self.assertEqual(7.5, self.customer.drunkeness)
-        
+    def test_pub_finds_food(self):
+        self.assertEqual(self.food1, self.pub.find_food_by_name('Crisps'))
+        self.assertEqual(None, self.pub.find_food_by_name('Nachos'))
+
+    # def test_pub_can_sell_food(self):
+    #     self.customer = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27, 8.00)
+    #     self.pub.sell_food(self.customer, 'Crisps')
+    #     self.assertEqual(5.00, self.customer.wallet)
+    #     self.assertEqual(101.00, self.pub.till)
+    #     self.assertEqual(7.5, self.customer.drunkeness)    

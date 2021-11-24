@@ -1,9 +1,10 @@
 class Pub:
     
-    def __init__(self, name, till, drinks):
+    def __init__(self, name, till, drinks, food):
         self.name = name
         self.till = till
         self.drinks = drinks
+        self.food = food
 
     def check_till(self):
         return self.till 
@@ -38,4 +39,21 @@ class Pub:
                 customer.wallet -= drink.price
                 self.till += drink.price
                 self.drinks.remove(drink)
-        
+
+    def find_food_by_name(self, name):
+        for food in self.food:
+            if name == food.name:
+                return food 
+    
+    # def sell_food (self, customer, name):
+    #     food = self.find_drink_by_name(drink_name)
+    #             customer.increase_drunkeness(drink)
+    #             customer.stomach.append(drink)
+    #             customer.wallet -= drink.price
+    #             self.till += drink.price
+    #             self.drinks.remove(drink)
+    #         elif not drink.alco_status: #alternatively use elif drink.alco_status == False
+    #             customer.stomach.append(drink)
+    #             customer.wallet -= drink.price
+    #             self.till += drink.price
+    #             self.drinks.remove(drink)
