@@ -7,9 +7,9 @@ from src.customer import Customer
 class TestCustomer(unittest.TestCase):
     
     def setUp(self):
-        self.drink1 = Drink('Whisky', 5.00, True)
-        self.drink2 = Drink('espresso martini', 7.00, True)
-        self.customer = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27)
+        self.drink1 = Drink('Whisky', 5.00, True, 1.00)
+        self.drink2 = Drink('espresso martini', 7.00, True, 3.00)
+        self.customer = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27, 4.00)
         
     def test_customer_has_name(self):
         self.assertEqual("Stephen O'Reilly", self.customer.name)
@@ -24,3 +24,5 @@ class TestCustomer(unittest.TestCase):
         self.assertEqual(True, self.customer.can_afford(self.drink1))
         self.assertEqual(False, self.customer.can_afford(self.drink2))
 
+    def test_customer_get_drunkeness(self):
+        self.assertEqual(4.00, self.customer.get_drunkeness())
