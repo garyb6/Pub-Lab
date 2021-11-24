@@ -10,10 +10,13 @@ class Customer:
         if self.wallet >= drink.price:
             return True 
         else:
-             return False 
+            return False 
     
     def get_drunkeness(self):
         return self.drunkeness 
     
     def increase_drunkeness(self, drink):
         self.drunkeness += drink.units 
+    
+    def decrease_drunkeness(self, food):
+        self.drunkeness -= food.rejuvenation_level 

@@ -45,15 +45,9 @@ class Pub:
             if name == food.name:
                 return food 
     
-    # def sell_food (self, customer, name):
-    #     food = self.find_drink_by_name(drink_name)
-    #             customer.increase_drunkeness(drink)
-    #             customer.stomach.append(drink)
-    #             customer.wallet -= drink.price
-    #             self.till += drink.price
-    #             self.drinks.remove(drink)
-    #         elif not drink.alco_status: #alternatively use elif drink.alco_status == False
-    #             customer.stomach.append(drink)
-    #             customer.wallet -= drink.price
-    #             self.till += drink.price
-    #             self.drinks.remove(drink)
+    def sell_food(self, customer, food_name):
+        food = self.find_food_by_name(food_name)
+        if customer.can_afford(food):
+            customer.wallet -= food.price
+            self.till += food.price
+            customer.drunkeness -= food.rejuvenation_level 

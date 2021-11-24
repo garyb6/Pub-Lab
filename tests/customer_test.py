@@ -33,4 +33,9 @@ class TestCustomer(unittest.TestCase):
         self.pub = Pub('The Prancing Pony', 100.00, [self.drink1, self.drink2], [self.food1])
         self.pub.sell_drink(self.customer, 'Whisky')
         self.assertEqual (5.00, (self.customer.drunkeness))
+    
+    def test_decrease_drunkeness(self):
+        self.pub = Pub('The Prancing Pony', 100.00, [self.drink1, self.drink2], [self.food1])
+        self.pub.sell_food(self.customer, 'Crisps')
+        self.assertEqual (3.50, (self.customer.drunkeness))
 
