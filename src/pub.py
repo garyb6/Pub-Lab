@@ -1,16 +1,23 @@
 class Pub:
     
-    def __init__(self, name, till, drinks, food):
+    def __init__(self, name, till, drinks, food, stock):
         self.name = name
         self.till = till
         self.drinks = drinks
         self.food = food
+        self.stock = stock 
 
     def check_till(self):
         return self.till 
 
     def drinks_list(self):
         return self.drinks 
+    
+    def has_food(self):
+        return self.food 
+    
+    def has_stock(self):
+        return self.stock 
 
     def find_drink_by_name(self, name):
         for drink in self.drinks:

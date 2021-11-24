@@ -12,7 +12,7 @@ class TestPub(unittest.TestCase):
         self.drink2 = Drink('Irn Bru', 2.00, False, 0)
         self.drink3 = Drink('Beer', 4.00, True, 1.50)
         self.food1 = Food('Crisps', 1.00, 0.5)
-        self.pub = Pub('The Prancing Pony', 100.00, [self.drink1, self.drink2, self.drink3], [self.food1])
+        self.pub = Pub('The Prancing Pony', 100.00, [self.drink1, self.drink2, self.drink3], [self.food1], {})
 
     def test_pub_has_name(self):
         self.assertEqual('The Prancing Pony', self.pub.name)
@@ -25,6 +25,12 @@ class TestPub(unittest.TestCase):
 
     def test_pub_has_drinks(self):
         self.assertEqual(3, len(self.pub.drinks))
+    
+    def test_pub_has_food(self):
+        self.assertEqual(1, len(self.pub.food))
+    
+    def test_pub_has_stock(self):
+        self.assertEqual({}, self.pub.stock)
 
     def test_pub_drink_list(self):
         self.assertEqual(self.pub.drinks, self.pub.drinks_list())
