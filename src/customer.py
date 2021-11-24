@@ -14,3 +14,6 @@ class Customer:
     
     def get_drunkeness(self):
         return self.drunkeness 
+    
+    def increase_drunkeness(self, drink):
+        self.drunkeness += drink.units 
