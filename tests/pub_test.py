@@ -42,7 +42,7 @@ class TestPub(unittest.TestCase):
         self.assertEqual (False, self.pub.get_id (self.customer_young))
         self.assertEqual (True, self.pub.get_id (self.customer_old))
 
-    def test_pub_can_sell_drink(self):
+    def test_pub_can_sell_drink_old_alco(self):
         self.customer = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27)
         self.pub.sell_drink(self.customer, 'Beer')
         self.assertEqual(3, len(self.customer.stomach))
@@ -50,7 +50,7 @@ class TestPub(unittest.TestCase):
         self.assertEqual(104.00, self.pub.till)
         self.assertEqual(False, self.drink3 in self.pub.drinks)
 
-    def test_pub_can_sell_drink(self):
+    def test_pub_can_sell_drink_old_soft(self):
         self.customer = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27)
         self.pub.sell_drink(self.customer, 'Irn Bru')
         self.assertEqual(3, len(self.customer.stomach))
@@ -58,7 +58,7 @@ class TestPub(unittest.TestCase):
         self.assertEqual(102.00, self.pub.till)
         self.assertEqual(False, self.drink2 in self.pub.drinks)
 
-    def test_pub_can_sell_drink(self):
+    def test_pub_can_sell_drink_young_alco(self):
         self.customer = Customer("JP O'Reilly", [], 10.00, 17)
         self.pub.sell_drink(self.customer, 'Beer')
         self.assertEqual(0, len(self.customer.stomach))
@@ -66,7 +66,7 @@ class TestPub(unittest.TestCase):
         self.assertEqual(100.00, self.pub.till)
         self.assertEqual(True, self.drink3 in self.pub.drinks)
 
-    def test_pub_can_sell_drink(self):
+    def test_pub_can_sell_drink_young_soft(self):
         self.customer = Customer("JP O'Reilly", [], 10.00, 17)
         self.pub.sell_drink(self.customer, 'Irn Bru')
         self.assertEqual(1, len(self.customer.stomach))
@@ -74,4 +74,10 @@ class TestPub(unittest.TestCase):
         self.assertEqual(102.00, self.pub.till)
         self.assertEqual(False, self.drink2 in self.pub.drinks)
 
-
+    def test_pub_can_sell_drink_too_poor(self):
+        self.customer = Customer("JP O'Reilly", [], 1.00, 30)
+        self.pub.sell_drink(self.customer, 'Beer')
+        self.assertEqual(0, len(self.customer.stomach))
+        self.assertEqual(1.00, self.customer.wallet)
+        self.assertEqual(100.00, self.pub.till)
+        self.assertEqual(True, self.drink3 in self.pub.drinks)
