@@ -39,7 +39,7 @@ class TestPub(unittest.TestCase):
         self.drink1 = Drink('Diet Irn Bru', 2.00, False, 0)
         self.drink2 = Drink('Corona', 4, True, 1.5)
         self.pub = Pub('The Prancing Pony', 100.00, [self.drink1, self.drink2], [], {})
-        self.assertEqual(self.drink1, self.pub.find_drink_by_name('Irn Bru'))
+        self.assertEqual(self.drink1, self.pub.find_drink_by_name('Diet Irn Bru'))
         self.assertEqual(None, self.pub.find_drink_by_name('Water'))
 
     # def test_pub_can_remove_drink(self):
