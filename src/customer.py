@@ -20,3 +20,10 @@ class Customer:
     
     def decrease_drunkeness(self, food):
         self.drunkeness -= food.rejuvenation_level 
+    
+    def reduce_wallet(self, amount):
+        self.wallet -=amount 
+    
+    # def add_drink(self, drink): - from Hannahs lab solution, different parameters set here. 
+    #     self.stomack.append.(drink)
+    
